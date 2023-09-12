@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container-fluid">
+    <form method="GET" action="{{ url_for('index') }}">
+    <!-- Dropdown menu for servers -->
+    <label for="serverSelect">Choose a server:</label>
+    <select name="server">
+        <option value="" {% if not selected_server %}selected{% endif %}>Select a server</option>
+        {% for server in servers %}
+            <option value="{{ server[0] }}" {% if server[0] == selected_server %}selected{% endif %}>{{ server[0] }}</option>
+        {% endfor %}
+        <option value="ALL" {% if selected_server == "ALL" %}selected{% endif %}>ALL</option>
+    </select>
+
+   <!-- Dropdown menu for owners -->
+    <label for="ownerSelect">Choose an owner:</label>
+    <select name="owner">
+        <option value="" {% if not selected_owner %}selected{% endif %}>Select an owner</option>
+        {% for owner in owners %}
+            <option value="{{ owner[0] }}" {% if owner[0] == selected_owner %}selected{% endif %}>{{ owner[0] }}</option>
+        {% endfor %}
+        <option value="ALL" {% if selected_owner == "ALL" %}selected{% endif %}>ALL</option>
+    </select>
+
+    <!-- Submit button -->
+    <button type="submit">Apply Filters</button>
+</form>
+
+
+     <!-- Table -->
+    <table class="table table-dark table-success table-striped">
+        <tr>
+            <th>Server Name</th>
+            <th>Drive Path</th>
+            <th>Path</th>
+            <th>Owner</th>
+            <th>Second Owner</th>
+            <th>Note</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>{{ item[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        {% for page_num in pages %}
+        <a class="{% if page_num == current_page %}active{% endif %}"
+           href="{{ url_for('index', page=page_num, server=selected_server, owner=selected_owner) }}">
+           {{ page_num }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

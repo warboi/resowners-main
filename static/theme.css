@@ -1,0 +1,59 @@
+.wrapper-dropdown {
+    /* размер и позиционирование */
+    position: relative;
+    width: 200px;
+    padding: 10px;
+    margin: 0 auto;
+
+    /*Общие стили */
+    background: #9bc7de;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+
+    /* Настройки шрифтов */
+    font-weight: bold;
+}
+
+
+
+table {
+background-color: #d6d6c2
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #1652c9;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
